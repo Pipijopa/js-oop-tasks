@@ -40,8 +40,16 @@ describe('es6', () => {
         it('экземпляр класса создается', () => {
             const dic = new core.Dictionary();
 
-            // TODO
             assert.strictEqual(!!dic, true);
         });
+
+        it('push', () => {
+            const dic = new core.Dictionary();
+            dic.push("key", "value");
+
+            assert.strictEqual(dic.get("key"), "value");
+            assert.strictEqual(dic.get("key1"), undefined);
+        });
+       
     });
 });

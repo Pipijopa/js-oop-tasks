@@ -1,6 +1,6 @@
 const assert = require('assert');
 const core = require('./oop');
-const {Point3D} = require("./oop");
+const { Point3D } = require("./oop");
 
 describe('ООП', () => {
     describe('#Point', () => {
@@ -23,6 +23,11 @@ describe('ООП', () => {
 
             assert.strictEqual(point.x, 1);
             assert.strictEqual(point.y, 0);
+        });
+
+        it('Проверка метода, который возвращает расстояние от точки до центра координат (0, 0)', () => {
+            const point = new core.Point(1, 0);
+            assert.strictEqual(point.vectorDistance(), 1)
         });
     });
 
@@ -56,22 +61,26 @@ describe('ООП', () => {
     });
 
     describe('#Queue', () => {
-        it('проверка массивом', () => {
-            const queue = new core.Queue();
-            // TODO:
-            assert.strictEqual(true, true);
+        it('проверка push', () => {
+            const queue = new core.Queue([34, 56]);
+
+            assert.strictEqual(queue.get(), 34);
+            assert.strictEqual(queue.get(), 56);
+            queue.add(78);
+            assert.strictEqual(queue.get(), 78);
+           
         });
 
         it('проверка на пограничные случаи', () => {
-            const queue = new core.Queue();
-            // TODO:
-            assert.strictEqual(true, true);
+            const queue = new core.Queue([1, 2, 3, 5]);
+            assert.strictEqual(queue.lenght(), 4);
+            assert.strictEqual(queue.get(), 1);
+            assert.strictEqual(queue.lenght(), 3);
         });
 
         it('может создаться из массива', () => {
-            const queue = new core.Queue([1,2,3,5]);
-            // TODO:
-            assert.strictEqual(true, true);
+            const queue = new core.Queue([910, 1112, 1314, 1516]);
+            assert.deepStrictEqual(queue.queue, [910, 1112, 1314, 1516]);
         });
     });
 });
